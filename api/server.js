@@ -6,13 +6,10 @@ const server = express();
 
 
 
-//HTTP METHOD, PATH
 
 
+server.use(express.json());
 
-
-
-//GET/
 
 
 server.get('/', (req, res) => {
@@ -30,7 +27,7 @@ server.post('./api/dogs', async (req,res) => {
     //try catch block
 
     try {
-        const newlyCreatedDog =  Dog.create(dog);
+        const newlyCreatedDog =  await Dog.create(dog);
         res.status(200).json(newlyCreatedDog);
 
     }catch(err) {
